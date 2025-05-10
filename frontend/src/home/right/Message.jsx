@@ -1,14 +1,26 @@
 import React from 'react';
 
-const Message = () => {
-  return (
-    <div className="p-4 space-y-4">
-      <div className="chat chat-start">
-        <div className="chat-bubble chat-bubble-info">Calm down, Anakin.</div>
-      </div>
+const Message = ({ message }) => {
+  const authUser = JSON.parse(localStorage.getItem("messanger"));
+  const itsMe = message._id === authUser.user._id;
 
-      <div className="chat chat-end">
-        <div className="chat-bubble chat-bubble-success">You have been given a great honor.</div>
+  const chatName = itsMe ? " chat-end" : "chat-start";
+  const chatColor = itsMe ? "bg-blue-500" : "";
+  const createdAt = new Date(message.createdAt);
+
+  const formattedTime = createdAt.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+  return (
+     <div>
+      <div className="p-4">
+        <div className={`chat ${chatName}`}>
+          <div className={`chat-bubble text-white ${chatColor}`}>
+            {message.message}
+          </div>
+          <div className="chat-footer">{formattedTime}</div>
+        </div>
       </div>
     </div>
   );

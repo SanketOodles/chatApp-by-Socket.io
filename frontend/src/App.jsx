@@ -5,12 +5,14 @@ import Logout from './home/left1/Logout'
 import Signup from './components/Signup'
 import Signin from './components/Signin'
 import { Routes, Route, Navigate } from 'react-router-dom'
+
 // import { useAuth } from './context/AuthProvider'
 const App = () => {
   let authUser = true
   // const [ authUser, setAuthUser ] = useAuth()
   return (
     <>
+    
       <Routes>
         <Route path="/"
           element={
