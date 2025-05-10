@@ -11,7 +11,11 @@ const useGetMessage = () => {
             setLoading(true);
             if (selectedConversation && selectedConversation._id) {
                 try {
-                    const responce = await axios.get(`${getMessageRoute}/${selectedConversation._id}`)
+                    const responce = await axios.get(`${getMessageRoute}/${selectedConversation._id}`,
+                        {
+                            withCredentials: true,
+                        }
+                    )
                     console.log(responce.data);
                     setMessage(responce.data);
                     setLoading(false);

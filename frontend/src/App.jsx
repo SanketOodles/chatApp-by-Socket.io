@@ -6,10 +6,11 @@ import Signup from './components/Signup'
 import Signin from './components/Signin'
 import { Routes, Route, Navigate } from 'react-router-dom'
 
-// import { useAuth } from './context/AuthProvider'
+
+import { useAuth } from './context/AuthProvider.jsx'
 const App = () => {
-  let authUser = true
-  // const [ authUser, setAuthUser ] = useAuth()
+  // let authUser = true
+  const [ authUser, setAuthUser ] = useAuth()
   return (
     <>
     
@@ -31,6 +32,7 @@ const App = () => {
         <Route path="/signin" element={authUser ? <Navigate to={"/"} /> : <Signin />} />
 
       </Routes>
+     
     </>
   )
 }

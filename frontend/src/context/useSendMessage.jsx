@@ -9,7 +9,9 @@ const useSendMessage = () => {
         setLoading(true);
         if(selectedConversation && selectedConversation._id) {
             try {
-               const res = await axios.post(`${sendMessageRoute}/${selectedConversation._id}`);
+               const res = await axios.post(`${sendMessageRoute}/${selectedConversation._id}`,{
+                withCredentials: true,
+               });
                setMessage([...messages, res.data]);
                setLoading(false);
             } catch (error) {

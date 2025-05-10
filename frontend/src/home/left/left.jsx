@@ -18,6 +18,6 @@ const Left = () => {
       </div>
     </div>
   );
-};
+};  
 
 export default Left;

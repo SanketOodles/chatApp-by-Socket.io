@@ -2,11 +2,11 @@ import dotenv from 'dotenv'
 dotenv.config()
 import cors from 'cors'
 import express from 'express'
-const app = express()
 import cookieParser from 'cookie-parser'
 import ConnectDB from './db/Conn.js'
 import userRoute from './routes/authRoutes.js'
 import messageRoute from './routes/messageRoute.js'
+import { app, server } from './socket/server.js'
 const port = process.env.PORT || 9000
 
 app.use(cors({
@@ -27,7 +27,7 @@ app.use('/message',messageRoute);
 const start=()=>{
     try {
         ConnectDB(process.env.MONGO_URL)
-        app.listen(port, () => {
+        server.listen(port, () => {
             console.log(`app listening on port ${port}`)
           })
     } catch (error) {
